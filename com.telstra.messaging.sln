@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-VisualStudioVersion = 12.0.0.0
-MinimumVisualStudioVersion = 10.0.0.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.telstra.messaging", "src\com.telstra.messaging\com.telstra.messaging.csproj", "{C0869B26-6FED-45CB-88E0-8AD7E6B96330}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.telstra.messaging.Test", "src\com.telstra.messaging.Test\com.telstra.messaging.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
@@ -23,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A956BBB9-EE06-4FE0-8FD1-D76A3B2526BD}
 	EndGlobalSection
 EndGlobal
