@@ -54,6 +54,43 @@ namespace com.telstra.messaging.Model
             }
             else
             {
+                this.To = new string[] { To };
+            }
+            // to ensure "Body" is required (not null)
+            if (Body == null)
+            {
+                throw new InvalidDataException("Body is a required property for SendSMSRequest and cannot be null");
+            }
+            else
+            {
+                this.Body = Body;
+            }
+            this.From = From;
+            this.Validity = Validity;
+            this.ScheduledDelivery = ScheduledDelivery;
+            this.NotifyURL = NotifyURL;
+            this.ReplyRequest = ReplyRequest;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SendSMSRequest" /> class.
+        /// </summary>
+        /// <param name="To">Phone number (in E.164 format) to send the SMS to. This number can be in international format if preceeded by a ‘+’, or in national format. (required).</param>
+        /// <param name="Body">The text body of the message. Messages longer than 160 characters will be counted as multiple messages. (required).</param>
+        /// <param name="From">Phone number (in E.164 format) the SMS was sent from. If not present, the serverice will use the mobile number associated with the application, or it be an Alphanumeric address of up to 11 characters..</param>
+        /// <param name="Validity">How long the platform should attempt to deliver the message for. This period is specified in minutes from the message.</param>
+        /// <param name="ScheduledDelivery">How long the platform should wait before attempting to send the message - specified in minutes..</param>
+        /// <param name="NotifyURL">Contains a URL that will be called once your message has been processed. The status may be delivered, expired, deleted, etc..</param>
+        /// <param name="ReplyRequest">If set to true, the reply message functionality will be implemented and the to address will be ignored if present. If false or not present, then normal message handling is implemented..</param>
+        public SendSMSRequest(string[] To, string Body = default(string), string From = default(string), int? Validity = default(int?), int? ScheduledDelivery = default(int?), string NotifyURL = default(string), bool? ReplyRequest = default(bool?))
+        {
+            // to ensure "To" is required (not null)
+            if (To == null)
+            {
+                throw new InvalidDataException("To is a required property for SendSMSRequest and cannot be null");
+            }
+            else
+            {
                 this.To = To;
             }
             // to ensure "Body" is required (not null)
@@ -71,13 +108,13 @@ namespace com.telstra.messaging.Model
             this.NotifyURL = NotifyURL;
             this.ReplyRequest = ReplyRequest;
         }
-        
+
         /// <summary>
         /// Phone number (in E.164 format) to send the SMS to. This number can be in international format if preceeded by a ‘+’, or in national format.
         /// </summary>
         /// <value>Phone number (in E.164 format) to send the SMS to. This number can be in international format if preceeded by a ‘+’, or in national format.</value>
         [DataMember(Name="to", EmitDefaultValue=false)]
-        public string To { get; set; }
+        public string[] To { get; private set; }
 
         /// <summary>
         /// The text body of the message. Messages longer than 160 characters will be counted as multiple messages.
